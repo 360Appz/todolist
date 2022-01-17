@@ -68,25 +68,47 @@ export default {
     {
       this.$refs.textfield.focus();
     },
-    
-  }
-}
+    onChangeToDoDone()
+    {
+      this.$store.dispatch("updateTodo", {
+        id: this.$props.data.id,
+        done: !this.$props.data.done,
+      });
+    },
+     deleteToDo()
+    {
+      this.$store.dispatch("deleteTodo", {
+        id: this.$props.data.id,
+        
+      });
+    },
+    onChangeToDoText(event)
+    {
+      const keyCode = event.keyCode;
+      if(keyCode === 8 && event.target.value === "")
+      {
+        this.deleteToDo();
+      }
+       this.$store.dispatch("deleteTodo", {
+        id: this.$props.data.id,
+        title:event.target.value,
+        
+      });
+     
+    },
+
+  },
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
+.todo__checkbox {
+  margin: 0 20px 0 5px;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
+.todo__title {
+  font-weight: 600;
+  font-size: 24px;
+  letter-spacing: 3px;
 }
 </style>
