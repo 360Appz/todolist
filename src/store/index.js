@@ -4,9 +4,9 @@ import Vuex from "vuex";
 import initialState from "../assets/data.json";
 import {createUniqueId, generateCurrentTimestamp} from "../utils";
 
-Vue.use(vuex);
+Vue.use(Vuex);
 
-const initialTodos = initialState.todos.map((todos) =>
+const initialTodos = initialState.todos.map((todo) =>
 {
     return {
         ...todo,
@@ -38,14 +38,14 @@ mutations : {
         state.todos = todos;
     },
 
-    ADD_TODO(state, previousToDo)
+    ADD_TODO(state, previousTodo)
     {
         const todos = [...state.todos];
         const index =  todos.findIndex((todo) => todo.id === previousTodo.id);
         const headEnd = [...todos].slice(0, index + 1);
         const tailEnd = [...todos].slice(0, index + 1);
         const newTodo = {
-            id: createUniqueId();
+            id: createUniqueId(),
             title : "",
             done: false,
             created: generateCurrentTimestamp(),
@@ -59,7 +59,7 @@ mutations : {
         const todos = [...state.todos];
         const index = todos.findIndex((todo) => todo.id === todoToBeDeleted.id);
 
-        todo.splice(index, 1);
+        todos.splice(index, 1);
         state.todos = todos;
     },
 },
@@ -84,4 +84,3 @@ modules:{},
 })
 
 
-)
