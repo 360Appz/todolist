@@ -2,7 +2,7 @@ import Vue from "vue";
 import Vuex from "vuex";
 
 import initialState from "../assets/data.json";
-import {createUniqueId, generateCurrentTimestamp} from "../utils";
+import {createUniqueId, generateCurrentTimeStamp} from "../utils";
 
 Vue.use(Vuex);
 
@@ -11,7 +11,7 @@ const initialTodos = initialState.todos.map((todo) =>
     return {
         ...todo,
         id: createUniqueId(),
-        created: generateCurrentTimestamp(),
+        created: generateCurrentTimeStamp(),
     };
 });
 
@@ -33,7 +33,7 @@ mutations : {
              expands it into individual elements*/
             ...todos[index],
             ...updatedTodo, 
-            lastUpdated: generateCurrentTimestamp(),
+            lastUpdated: generateCurrentTimeStamp(),
         };
         state.todos = todos;
     },
@@ -48,7 +48,7 @@ mutations : {
             id: createUniqueId(),
             title : "",
             done: false,
-            created: generateCurrentTimestamp(),
+            created: generateCurrentTimeStamp(),
             lastUpdated: "--",
         };
         state.todos = [...headEnd, newTodo,...tailEnd];
@@ -65,7 +65,7 @@ mutations : {
 },
 actions:
 {
-    addToDo({commit}, previousToDo)
+    addToDo({commit}, previousTodo)
     {
         commit("ADD_TODO", previousTodo);
     },

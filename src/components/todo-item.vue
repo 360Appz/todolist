@@ -38,16 +38,16 @@ export default {
       title: String,
       done: Boolean,
       created:String,
-      lastUpdated: String
+      lastUpdated: String,
     },
     index:Number,
-    totsl:Number
+    total:Number,
   },
 
   mounted()
   {
     if(this.$props.data.title === "" &&
-    this.$props.index === this.$$props.total - 1)
+    this.$props.index === this.$props.total - 1)
     {
       this.focusInput();
     }
@@ -68,7 +68,7 @@ export default {
     {
       this.$refs.textfield.focus();
     },
-    onChangeToDoDone()
+    onChangeTodoDone()
     {
       this.$store.dispatch("updateTodo", {
         id: this.$props.data.id,
@@ -82,7 +82,7 @@ export default {
         
       });
     },
-    onChangeToDoText(event)
+    onChangeTodoText(event)
     {
       const keyCode = event.keyCode;
       if(keyCode === 8 && event.target.value === "")

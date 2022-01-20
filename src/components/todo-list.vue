@@ -1,6 +1,6 @@
 <template>
     <v-card class="todo-list" min-width="400px">
-        <v-card class= "no=todolist-notice" v-if="todoLength === 0">
+        <v-card class= "no=todolist-notice" v-if="todosLength === 0">
             <v-icon>mdi=file-cabinet</v-icon>
             <span>No todos</span>
     </v-card>
@@ -10,7 +10,7 @@
        <todo-item :key="`todo--${index}`"
        :data="todo"
        :index="index"
-       :total="todoslength" />
+       :total="todosLength" />
     <v-divider v-if="index !== todosLength -1"
     :key="`divider--${index}`">
     </v-divider>
@@ -42,7 +42,8 @@ export default {
     {
         addTodo()
         {
-            this.$store.dispatch("addTodo", this.todos[this.todoslength - 1])
+            this.$store.dispatch("addTodo", this.todos[this.todosLength - 1])
+            //todoslength
         },
     },
     computed:{
@@ -54,12 +55,12 @@ export default {
                 todos:(state) => {
                     return state.todos;
                 },
-                todoslength:(state) =>
+                todosLength:(state) =>
                 {
                     return state.todos.length;
                 },
             }),
-        }
+        },
     };
 </script>
 
