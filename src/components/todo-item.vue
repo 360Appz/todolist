@@ -1,7 +1,7 @@
 <template>
   <v-list-item class= "todo__item">
     <v-checkbox class="todo__checkbox" 
-    :input-value = "data.done"
+    :input-value="data.done"
     @change="onChangeTodoDone"
     color="blue"
     hide-details>
@@ -22,7 +22,7 @@
       </v-list-item-subtitle>     
     </v-list-item-content>
 
-      <v-btn colour="error" fab small dark @click="deleteToDo">
+      <v-btn color="error" fab small dark @click="deleteTodo">
         <v-icon>mdi-trash-can</v-icon>
       </v-btn>
   </v-list-item>
@@ -54,7 +54,7 @@ export default {
   },
   methods :
   {
-    addToDo(event)
+    addTodo(event)
     {
       if(event.target.value !== "" &&
         this.$props.index === this.$props.total - 1)
@@ -75,7 +75,7 @@ export default {
         done: !this.$props.data.done,
       });
     },
-     deleteToDo()
+     deleteTodo()
     {
       this.$store.dispatch("deleteTodo", {
         id: this.$props.data.id,
@@ -87,7 +87,7 @@ export default {
       const keyCode = event.keyCode;
       if(keyCode === 8 && event.target.value === "")
       {
-        this.deleteToDo();
+        this.deleteTodo();
       }
        this.$store.dispatch("deleteTodo", {
         id: this.$props.data.id,

@@ -21,6 +21,8 @@ state: {
     todos: initialTodos,
 },
 getters:{},
+
+//Used when state changes in Vuex Store
 mutations : {
     UPDATE_TODO(state, updatedTodo)
     {
@@ -65,7 +67,7 @@ mutations : {
 },
 actions:
 {
-    addToDo({commit}, previousTodo)
+    addTodo({commit}, previousTodo)
     {
         commit("ADD_TODO", previousTodo);
     },
