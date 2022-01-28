@@ -4,7 +4,7 @@ This project is my following task after the Pokemon app. This app seeks to utili
 
 # Demo
 
- ![](https://github.com/360Appz/Research-Papers/blob/main/UI%20%26%20UX/Prototype%20Image/UI.PNG){ padding-top:10px }
+ ![](https://github.com/360Appz/todolist/blob/main/demoPhoto/2.PNG){ padding-top:10px }
 
 # Technologies
 * Vue.js
