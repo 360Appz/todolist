@@ -1,6 +1,7 @@
 <template>
   <v-list-item class= "todo__item">
-    <v-checkbox class="todo__checkbox" 
+    <v-checkbox 
+    class="todo__checkbox" 
     :input-value="data.done"
     @change="onChangeTodoDone"
     color="blue"
@@ -34,16 +35,18 @@ export default {
   props: {
     data:
     {
-      id:String,
+      id: String,
       title: String,
       done: Boolean,
-      created:String,
+      created: String,
       lastUpdated: String,
     },
     index:Number,
     total:Number,
   },
 
+//Acts as a lifecycle hook. It is called when component
+//is added to the DOM
   mounted()
   {
     if(this.$props.data.title === "" &&
@@ -52,7 +55,7 @@ export default {
       this.focusInput();
     }
   },
-  methods :
+  methods:
   {
     addTodo(event)
     {
@@ -64,12 +67,14 @@ export default {
         });
       }
     },
+    //Triggered when element is focus/selected
     focusInput()
     {
-      this.$refs.textfield.focus();
+      this.$refs.textField.focus();
     },
     onChangeTodoDone()
     {
+      //Dispatch function triggers actions 
       this.$store.dispatch("updateTodo", {
         id: this.$props.data.id,
         done: !this.$props.data.done,
@@ -89,9 +94,9 @@ export default {
       {
         this.deleteTodo();
       }
-       this.$store.dispatch("deleteTodo", {
+       this.$store.dispatch("updateTodo", {
         id: this.$props.data.id,
-        title:event.target.value,
+        title: event.target.value,
         
       });
      

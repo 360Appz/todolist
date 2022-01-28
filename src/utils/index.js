@@ -6,9 +6,9 @@ const createUniqueId = () =>
     return uuidv4();
 };
 
-const generateCurrentTimeStamp = () =>
+const generateCurrentTimestamp = () =>
 {
     return dayjs().format("DD MMM YYYY HH:mm:ss");
 };
 
-export{createUniqueId, generateCurrentTimeStamp};
+export{createUniqueId, generateCurrentTimestamp};

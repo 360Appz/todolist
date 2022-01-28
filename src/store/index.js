@@ -2,16 +2,17 @@ import Vue from "vue";
 import Vuex from "vuex";
 
 import initialState from "../assets/data.json";
-import {createUniqueId, generateCurrentTimeStamp} from "../utils";
+import {createUniqueId, generateCurrentTimestamp} from "../utils";
 
 Vue.use(Vuex);
 
+//From data.json
 const initialTodos = initialState.todos.map((todo) =>
 {
     return {
         ...todo,
         id: createUniqueId(),
-        created: generateCurrentTimeStamp(),
+        created: generateCurrentTimestamp(),
     };
 });
 
@@ -20,6 +21,8 @@ state: {
     ...initialState,
     todos: initialTodos,
 },
+/*Normally used when multiple components need to 
+derive state based on stored state*/
 getters:{},
 
 //Used when state changes in Vuex Store
@@ -35,7 +38,7 @@ mutations : {
              expands it into individual elements*/
             ...todos[index],
             ...updatedTodo, 
-            lastUpdated: generateCurrentTimeStamp(),
+            lastUpdated: generateCurrentTimestamp(),
         };
         state.todos = todos;
     },
@@ -50,7 +53,7 @@ mutations : {
             id: createUniqueId(),
             title : "",
             done: false,
-            created: generateCurrentTimeStamp(),
+            created: generateCurrentTimestamp(),
             lastUpdated: "--",
         };
         state.todos = [...headEnd, newTodo,...tailEnd];
@@ -65,6 +68,7 @@ mutations : {
         state.todos = todos;
     },
 },
+//Actions commit mutations, commits keyword commits mutation, which changes state
 actions:
 {
     addTodo({commit}, previousTodo)
@@ -80,6 +84,9 @@ actions:
         commit("UPDATE_TODO", updatedTodo);
       },
 },
+
+//Store can be divided into modules, if required,
+//scaling application
 modules:{},
 
 

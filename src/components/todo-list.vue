@@ -42,8 +42,8 @@ export default {
     {
         addTodo()
         {
-            this.$store.dispatch("addTodo", this.todos[this.todosLength - 1])
-            //todoslength
+            this.$store.dispatch("addTodo", this.todos[this.todosLength - 1]);
+            
         },
     },
     computed:{
